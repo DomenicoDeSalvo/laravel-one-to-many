@@ -27,11 +27,12 @@
                 <input type="text" name="link" class="form-control" id="link" value="{{old('link')}}" placeholder="URL">
             </div>
             <div class="text-center my-4">
-                <button class="btn btn-secondary">Aggiungi</button>
+                <button class="btn btn-primary">Aggiungi</button>
             </div>
         </form>
     </div>
 
+    <!-- Messaggio errore -->
     <div class="container">
         @if($errors->any())
             <div class="alert alert-danger">

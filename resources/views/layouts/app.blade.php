@@ -92,6 +92,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="../../resources/js/app.js"></script>
 </body>
 
 </html>

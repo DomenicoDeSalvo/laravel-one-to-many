@@ -7,14 +7,11 @@
 @endsection
 
 @section('content')
+<!-- Corpo dello show -->
     <div class="container my-4">
         <div class="d-flex justify-content-between my-3 ">
-                <a class='btn btn-secondary' href="{{route('admin.projects.edit', $project)}}">Modifica</a>
-            <form action="{{route ('admin.projects.destroy', $project)}}" method="POST">
-                @method('DELETE')
-                @csrf
-                <button class="btn-danger btn">Elimina</button>
-            </form>
+            <a class='btn btn-secondary' href="{{route('admin.projects.edit', $project)}}">Modifica</a>
+            <button class="btn btn-danger delete">Elimina</button>
         </div>
     </div>
     <div class="container text-center">
@@ -30,6 +27,31 @@
                     <a href="{{$project->link}}">{{$project->link}}</a>
                 </div>
             </div>
+        </div>
+    </div>
+<!-- Modale -->
+    <div class="modal" tabindex="-1" id="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Elimina</h5>
+              <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>E SE POI TE NE PENTI?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">No</button>
+              <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                        
+                @csrf
+                @method('DELETE')
+
+                <button class="btn btn-danger delete">Si</button>
+            
+            </form> 
+            </div>
+          </div>
         </div>
     </div>
 @endsection
