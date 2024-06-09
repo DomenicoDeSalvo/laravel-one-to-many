@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             // Aggiungere colonna e vincolo
-            $table->unsignedBigInteger('type_id')->nullable();
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->unsignedBigInteger('type_id')->nullable()->after('id');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('set null');
 
             // Scorciatoia
-            // $table->foreignId('category_id')->constrained();
+            //$table->foreignId('type')->constrained();
         });
     }
 
