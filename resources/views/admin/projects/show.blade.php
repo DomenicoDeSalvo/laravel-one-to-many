@@ -26,6 +26,8 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">{{$project->starting_date}}</h5>
                     <p class="card-text">{{$project->description}}</p>
+                    <h5 class="card-title text-center">Link esterno:</h5>
+                    <a href="{{$project->link}}">{{$project->link}}</a>
                 </div>
             </div>
         </div>

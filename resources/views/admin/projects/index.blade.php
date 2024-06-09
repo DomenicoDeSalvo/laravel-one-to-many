@@ -7,7 +7,9 @@
     <div class="container my-4">
         <h1 class="text-center"> Il mio portfolio</h1>
     </div>
-
+    <div class="container">
+        <a class='btn btn-primary' href="{{route('admin.projects.create')}}">Aggiungi Progetto</a>
+    </div>
     <div class="container my-4">
         <table class="table">
             <thead>
