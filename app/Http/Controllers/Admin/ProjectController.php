@@ -34,15 +34,8 @@ class ProjectController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreProjectRequest $request)
-    {
-        // $request->validate([
-        //     'title' => 'required|min:3|max:255',
-        //     'description' => 'required',
-        //     'starting_date' => 'required|date',
-        //     'link' => 'required|url',
-        // ]);
-        
-        $form_data = $request->validated();
+    {    
+         $form_data = $request->validated();
         $base_slug = Str::slug($form_data['title']);
         $slug = $base_slug;
         $n = 0;
@@ -83,14 +76,6 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        // $request->validate([
-        //     'title' => 'required|min:3|max:255',
-        //     'slug' => ['required', 'max:255', Rule::unique('projects')->ignore($project->id)],
-        //     'description' => 'required',
-        //     'starting_date' => 'required|date',
-        //     'link' => 'required|url',
-        // ]);
-        
         $form_data = $request->all();
         $project->update($form_data);
         return to_route('admin.projects.show', $project);
