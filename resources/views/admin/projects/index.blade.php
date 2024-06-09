@@ -30,7 +30,7 @@
                         <a href="{{route('admin.projects.show', $project)}}">{{$project->title}}</a>
                     </td>
                     <td>
-                        {{$project->description}}
+                        {!!$project->description!!}
                     </td>
                     <td>
                         {{$project->starting_date}}

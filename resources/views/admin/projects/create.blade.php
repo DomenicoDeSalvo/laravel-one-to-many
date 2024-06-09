@@ -26,6 +26,9 @@
                 <label for="link" class="form-label">Link alla pagina del progetto</label>
                 <input type="text" name="link" class="form-control" id="link" value="{{old('link')}}" placeholder="URL">
             </div>
+            <div class="text-center my-4">
+                <button class="btn btn-secondary">Aggiungi</button>
+            </div>
         </form>
     </div>
 
