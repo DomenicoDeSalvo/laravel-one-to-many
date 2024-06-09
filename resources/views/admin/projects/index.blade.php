@@ -36,9 +36,14 @@
                         {{$project->starting_date}}
                     </td>
                     <td>
-                        <button class="btn">1</button>
-                        <button class="btn">2</button>
-
+                        <div class="d-flex">
+                            <a class='btn btn-secondary' href="{{route('admin.projects.edit', $project)}}">Modifica</a>
+                            <form action="{{route ('admin.projects.destroy', $project)}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn-danger btn">Elimina</button>
+                        </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
