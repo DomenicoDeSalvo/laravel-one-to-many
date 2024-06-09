@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->date('starting_date');
-            $table->string('link')->nullable();
+            $table->string('link');
             $table->timestamps();
         });
     }

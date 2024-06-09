@@ -36,7 +36,7 @@ class ProjectController extends Controller
             'title' => 'required|min:3|max:255',
             'description' => 'required',
             'starting_date' => 'required|date',
-            'link' => 'nullable|url',
+            'link' => 'required|url',
         ]);
         
         $form_data = $request->all();
@@ -45,7 +45,7 @@ class ProjectController extends Controller
         $form_data['slug'] = $slug;
         $new_project = Project::create($form_data);
 
-        return redirect()->route('admin.projects.show', $new_project);
+        return to_route('admin.projects.show', $new_project);
     }
 
     /**
@@ -61,7 +61,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
