@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -31,16 +33,16 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        $request->validate([
-            'title' => 'required|min:3|max:255',
-            'description' => 'required',
-            'starting_date' => 'required|date',
-            'link' => 'required|url',
-        ]);
+        // $request->validate([
+        //     'title' => 'required|min:3|max:255',
+        //     'description' => 'required',
+        //     'starting_date' => 'required|date',
+        //     'link' => 'required|url',
+        // ]);
         
-        $form_data = $request->all();
+        $form_data = $request->validated();
         $base_slug = Str::slug($form_data['title']);
         $slug = $base_slug;
         $n = 0;
@@ -79,15 +81,15 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        $request->validate([
-            'title' => 'required|min:3|max:255',
-            'slug' => ['required', 'max:255', Rule::unique('projects')->ignore($project->id)],
-            'description' => 'required',
-            'starting_date' => 'required|date',
-            'link' => 'required|url',
-        ]);
+        // $request->validate([
+        //     'title' => 'required|min:3|max:255',
+        //     'slug' => ['required', 'max:255', Rule::unique('projects')->ignore($project->id)],
+        //     'description' => 'required',
+        //     'starting_date' => 'required|date',
+        //     'link' => 'required|url',
+        // ]);
         
         $form_data = $request->all();
         $project->update($form_data);
