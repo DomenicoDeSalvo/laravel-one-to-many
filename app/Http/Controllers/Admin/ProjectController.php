@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -69,7 +70,17 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'slug' => ['required', 'max:255', Rule::unique('projects')->ignore($project->id)],
+            'description' => 'required',
+            'starting_date' => 'required|date',
+            'link' => 'required|url',
+        ]);
+        
+        $form_data = $request->all();
+        $project->update($form_data);
+        return to_route('admin.projects.show', $project);
     }
 
     /**
