@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{$project->starting_date}}</h5>
-                    <h6 class="card-title text-center">{{$project->type ? $project->type->name : ''}}</h6>
+                    <h6 class="card-title text-center">{{optional($project->type)->name}}</h6>
                     <p class="card-text">{!!$project->description!!}</p>
                     <h5 class="card-title text-center">Link esterno:</h5>
                     <a href="{{$project->link}}">{{$project->link}}</a>

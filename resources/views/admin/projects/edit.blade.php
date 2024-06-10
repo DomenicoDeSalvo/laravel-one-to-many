@@ -20,6 +20,15 @@
                 <input type="text" name="slug" class="form-control" id="slug" value="{{old('slug', $project->slug)}}" placeholder="Nuovo slug">
             </div>
             <div class="mb-3">
+                <label for="type_id" class="form-label">Ambito</label>
+                <select class="form-control" name="type_id" id="type_id">
+                    <option value="">Seleziona Ambito</option>
+                    @foreach ($types as $type)
+                        <option @selected ($type -> id == old('type_id', $project->type_id)) value="{{$type->id}}">{{$type->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control" name="description" id="description" rows="3">{{old('description',$project->description)}}</textarea>
             </div>

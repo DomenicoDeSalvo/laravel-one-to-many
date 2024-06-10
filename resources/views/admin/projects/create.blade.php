@@ -15,6 +15,15 @@
                 <input type="text" name="title" class="form-control" id="title" value="{{old('title')}}" placeholder="Inserisci il titolo del progetto">
             </div>
             <div class="mb-3">
+                <label for="type_id" class="form-label">Ambito</label>
+                <select class="form-control" name="type_id" id="type_id">
+                    <option value="">Seleziona Ambito</option>
+                    @foreach ($types as $type)
+                        <option @selected ($type->id == old('type_id')) value="{{$type->id}}">{{$type->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control" name="description" id="description" rows="3">{{old('description')}}</textarea>
             </div>
