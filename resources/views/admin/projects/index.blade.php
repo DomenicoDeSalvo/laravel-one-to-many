@@ -15,7 +15,7 @@
             <thead>
                 <th>Numero</th>
                 <th>Titolo</th>
-                <th>Descrizione</th>
+                <th>Ambito</th>
                 <th>Inizio progetto</th>
                 <th></th>
             </thead>
@@ -30,7 +30,7 @@
                         <a href="{{route('admin.projects.show', $project)}}">{{$project->title}}</a>
                     </td>
                     <td>
-                        {!!$project->description!!}
+                        {{$project->type ? $project->type->name : ''}}
                     </td>
                     <td>
                         {{$project->starting_date}}
